@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+/* Global Styles */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --roboto: 'Roboto', serif;
+}
+
+body {
+  color: #fff;
+  font-weight: 400;
+  font-family: var(--roboto);
+  overflow-x: clip;
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #0c101c;
+}
+
+.background {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-image: linear-gradient(180deg, #0c101c, #171e32, #242f50);
+}
+
+h1 {
+  line-height: 1;
+  font-weight: 900;
+  text-align: center;
+  margin-block: 1rem;
+  font-size: clamp(2rem, 0.25rem + 5vw, 7rem);
+}
+
+p {
+  opacity: 80%;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+.container {
+  margin-block: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  --size: clamp(250px, 85vw, 400px);
+  background-color: orangered;
+  width: var(--size);
+  height: var(--size);
+}
+
+main {
+  --break: 4dvw;
+  --full: 4dvw;
+
+  display: grid;
+  grid-template-columns: [full-start] var(--full) [break-start] var(--break) [content-start] 1fr [content-end] var(--break) [break-end] var(--full) [full-end];
+}
+
+@media (width <= 640px) {
+  main {
+    --break: 0;
+  }
+}
+
+.content {
+  grid-column: content;
+}
+
+.break {
+  grid-column: break;
+}
+
+.full {
+  grid-column: full;
+}
